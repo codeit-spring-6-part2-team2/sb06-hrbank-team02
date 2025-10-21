@@ -7,6 +7,7 @@ import com.team2.hrbank.department.dto.DepartmentUpdateRequest;
 import java.util.List;
 
 public interface DepartmentService {
+
     DepartmentDto createDepartment(DepartmentCreateRequest request);
 
     DepartmentDto updateDepartment(Long id, DepartmentUpdateRequest request);
@@ -15,7 +16,7 @@ public interface DepartmentService {
 
     DepartmentDto getDepartment(Long id);
 
-    List<DepartmentDto> getDepartments(String name, String description, String sortBy, Long lastId, int pageSize);
+    List<DepartmentDto> getDepartments(String searchKeyword, String sortBy, Long lastId, int pageSize);
 
     long getEmployeeCount(Long departmentId);
 }
