@@ -2,9 +2,11 @@ package com.team2.hrbank.changelog.dto;
 
 import lombok.Builder;
 
+import java.util.List;
+
 @Builder
 public record CursorPageResponseChangeLogDto<T>(
-        T[] contents,
+        List<T> contents,
         String nextCursor,
         Long nextIdAfter,
         Integer size,
