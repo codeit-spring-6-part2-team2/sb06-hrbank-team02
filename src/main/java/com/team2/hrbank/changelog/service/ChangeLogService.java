@@ -11,7 +11,7 @@ public interface ChangeLogService {
 
     CursorPageResponseChangeLogDto<ChangeLogDto> getChangeLogs(ChangeLogRequestDto.PaginatedLogRequest request);
 
-    DiffDto getDiffByChangeLogId(Long id);
+    DiffDto[] getDiffByChangeLogId(Long id);
 
     Long getTotalCount(LocalDateTime fromDate, LocalDateTime toDate);
 
