@@ -23,6 +23,17 @@ public class EmployeeLogDto {
     ) {}
 
     @Builder
+    public record CreateBeforeLogRequest(
+            LocalDateTime hireDate,
+            String name,
+            String position,
+            String department,
+            String email,
+            String employeeNumber,
+            String status
+    ) {}
+
+    @Builder
     public record CreateDeleteLogRequest(
             LocalDateTime hireDate,
             String name,
