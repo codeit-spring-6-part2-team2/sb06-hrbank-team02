@@ -18,6 +18,7 @@ public class EmployeeLogDto {
             String email,
             String employeeNumber,
             String status,
+            //ChangeLog의 필드
             String memo,
             String ipAddress
     ) {}
@@ -40,6 +41,7 @@ public class EmployeeLogDto {
             String position,
             String department,
             String email,
+            String employeeNumber,
             String status,
             String memo,
             String ipAddress
