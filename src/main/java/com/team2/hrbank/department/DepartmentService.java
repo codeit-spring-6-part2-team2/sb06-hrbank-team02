@@ -1,10 +1,9 @@
 package com.team2.hrbank.department;
 
+import com.team2.hrbank.department.dto.CursorPageResponseDepartmentDto;
 import com.team2.hrbank.department.dto.DepartmentCreateRequest;
 import com.team2.hrbank.department.dto.DepartmentDto;
 import com.team2.hrbank.department.dto.DepartmentUpdateRequest;
-
-import java.util.List;
 
 public interface DepartmentService {
 
@@ -16,7 +15,5 @@ public interface DepartmentService {
 
     DepartmentDto getDepartment(Long id);
 
-    List<DepartmentDto> getDepartments(String searchKeyword, String sortBy, Long lastId, int pageSize);
-
-    long getEmployeeCount(Long departmentId);
+    CursorPageResponseDepartmentDto getDepartments(String searchKeyword, String sortBy, Long lastId, int pageSize);
 }
