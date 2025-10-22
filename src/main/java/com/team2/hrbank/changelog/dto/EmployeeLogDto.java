@@ -24,11 +24,11 @@ public class EmployeeLogDto {
 
     @Builder
     public record CreateDeleteLogRequest(
+            LocalDateTime hireDate,
             String name,
             String position,
             String department,
             String email,
-            String employeeNumber,
             String status,
             String memo,
             String ipAddress
