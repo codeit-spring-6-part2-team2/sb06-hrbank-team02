@@ -6,7 +6,7 @@ public record CursorPageResponseBackupDto(
         List<BackupDto> content,
         String nextCursor,
         Long nextIdAfter,
-        Short size,
+        int size,
         Long totalElements,
         Boolean hasNext
 ) {
