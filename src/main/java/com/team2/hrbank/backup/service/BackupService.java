@@ -8,15 +8,13 @@ import java.util.List;
 
 public interface BackupService {
 
-    BackupDto backup(BackupDto backupDto);
+    // 백업 생성
+    BackupDto addBackup(BackupDto backupDto);
 
     // 전체 목록 조회 (정렬은 startedAt, endedAt 조건 중 하나)
     List<BackupDto> getBackup();
-
-    // 조건 조회
-    List<BackupDto> getBackupByWorker(String worker);
-    List<BackupDto> getBackupByStartedAt(LocalDateTime startedAt);
-    List<BackupDto> getBackupByStatus(BackupStatus status);
+    // 조건 목록 조회
+    List<BackupDto> getBackups(BackupDto backupDto);
 
     // 최근 백업 정보 조회
     BackupDto getRecentBackup();
