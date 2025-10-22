@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 public class ChangeLogRequestDto {
 
-    public record PaginatedLogRequest(
+    private record PaginatedLogRequest(
             String employeeNumber,
             LogType type,
             String memo,
@@ -24,7 +24,5 @@ public class ChangeLogRequestDto {
             String sortDirection
     ) {
     }
-
-
 
 }

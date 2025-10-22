@@ -5,8 +5,8 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public record CursorPageResponseChangeLogDto<T>(
-        List<T> contents,
+public record CursorPageResponseChangeLogDto(
+        List<ChangeLogDto> contents,
         String nextCursor,
         Long nextIdAfter,
         Integer size,
