@@ -2,13 +2,16 @@ package com.team2.hrbank.changelog.dto;
 
 import com.team2.hrbank.changelog.domain.LogType;
 import jakarta.validation.constraints.NotBlank;
-import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
 
 public class ChangeLogRequestDto {
 
-    private record PaginatedLogRequest(
+    private ChangeLogRequestDto() {
+        
+    }
+
+    public record PaginatedLogRequest(
             String employeeNumber,
             LogType type,
             String memo,
@@ -23,6 +26,8 @@ public class ChangeLogRequestDto {
             String sortField,
             String sortDirection
     ) {
+
+
     }
 
 }
