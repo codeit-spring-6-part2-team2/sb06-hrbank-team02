@@ -1,6 +1,6 @@
 package com.team2.hrbank.changelog.dto;
 
-import com.team2.hrbank.changelog.domain.LogType;
+import com.team2.hrbank.changelog.domain.ChangeLogType;
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDateTime;
@@ -13,7 +13,7 @@ public class ChangeLogRequestDto {
 
     public record PaginatedLogRequest(
             String employeeNumber,
-            LogType type,
+            ChangeLogType type,
             String memo,
             String ipAddress,
             LocalDateTime atFrom,

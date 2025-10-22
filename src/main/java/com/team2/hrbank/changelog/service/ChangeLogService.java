@@ -1,9 +1,6 @@
 package com.team2.hrbank.changelog.service;
 
-import com.team2.hrbank.changelog.dto.ChangeLogDto;
-import com.team2.hrbank.changelog.dto.ChangeLogRequestDto;
-import com.team2.hrbank.changelog.dto.CursorPageResponseChangeLogDto;
-import com.team2.hrbank.changelog.dto.DiffDto;
+import com.team2.hrbank.changelog.dto.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,5 +12,11 @@ public interface ChangeLogService {
     List<DiffDto> getDiffByChangeLogId(Long id);
 
     Long getTotalCount(LocalDateTime fromDate, LocalDateTime toDate);
+
+    ChangeLogDto addCreateEmployeeLog(EmployeeLogDto.CreateLogRequest request);
+
+    ChangeLogDto addUpdateEmployeeLog(EmployeeLogDto.CreateLogRequest before, EmployeeLogDto.CreateLogRequest after);
+
+    ChangeLogDto addDeleteEmployeeLog(EmployeeLogDto.CreateDeleteLogRequest request);
 
 }

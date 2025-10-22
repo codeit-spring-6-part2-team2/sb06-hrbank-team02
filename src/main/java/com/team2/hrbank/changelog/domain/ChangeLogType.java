@@ -1,6 +1,6 @@
 package com.team2.hrbank.changelog.domain;
 
-public enum LogType {
+public enum ChangeLogType {
 
     CREATED,
     UPDATED,
