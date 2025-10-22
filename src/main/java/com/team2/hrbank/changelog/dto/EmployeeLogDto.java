@@ -1,6 +1,7 @@
 package com.team2.hrbank.changelog.dto;
 
 import lombok.Builder;
+import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
 
@@ -19,6 +20,7 @@ public class EmployeeLogDto {
             String employeeNumber,
             String status,
             //ChangeLog의 필드
+            @Nullable
             String memo,
             String ipAddress
     ) {}
@@ -43,6 +45,7 @@ public class EmployeeLogDto {
             String email,
             String employeeNumber,
             String status,
+            @Nullable
             String memo,
             String ipAddress
     ) {}
