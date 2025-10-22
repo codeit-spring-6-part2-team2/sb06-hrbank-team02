@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ChangeLogService {
 
-    CursorPageResponseChangeLogDto<ChangeLogDto> getChangeLogs(ChangeLogRequestDto.PaginatedLogRequest request);
+    CursorPageResponseChangeLogDto getChangeLogs(ChangeLogRequestDto.PaginatedLogRequest request);
 
     List<DiffDto> getDiffByChangeLogId(Long id);
 
