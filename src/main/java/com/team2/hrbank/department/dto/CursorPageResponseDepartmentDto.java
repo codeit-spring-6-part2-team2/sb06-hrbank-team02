@@ -12,6 +12,7 @@ public record CursorPageResponseDepartmentDto(
 ) {
     // 조회 결과가 비어있거나, 다음 페이지가 없는 경우를 위한 정적 팩토리 메서드
     public static CursorPageResponseDepartmentDto empty() {
-        return new CursorPageResponseDepartmentDto(List.of(), false, null, null, 0, 0L);
+        return new CursorPageResponseDepartmentDto(List.of(), false, null,
+                null, 0, 0L);
     }
 }

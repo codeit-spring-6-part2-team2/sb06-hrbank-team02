@@ -15,5 +15,6 @@ public interface DepartmentService {
 
     DepartmentDto getDepartment(Long id);
 
-    CursorPageResponseDepartmentDto getDepartments(String nameOrDescription, String sortField, String sortDirection, Long idAfter, int size);
+    CursorPageResponseDepartmentDto getDepartments(String nameOrDescription, Long idAfter,
+                                                   String cursor, int size, String sortField, String sortDirection);
 }
