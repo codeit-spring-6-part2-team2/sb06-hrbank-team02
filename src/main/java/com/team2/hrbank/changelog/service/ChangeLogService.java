@@ -6,6 +6,7 @@ import com.team2.hrbank.changelog.dto.CursorPageResponseChangeLogDto;
 import com.team2.hrbank.changelog.dto.DiffDto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface ChangeLogService {
 
