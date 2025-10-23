@@ -14,7 +14,7 @@ public class EmployeeEmail {
     @Column(name = "email", nullable = false)
     private String email;
 
-    public EmployeeEmail(String email) {
+    protected EmployeeEmail(String email) {
         this.email = email;
     }
 

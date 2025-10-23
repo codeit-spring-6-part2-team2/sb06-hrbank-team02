@@ -22,7 +22,7 @@ public class IPAddress {
     private static final Pattern IPV6_PATTERN =
             Pattern.compile("^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^::1$|^::$");
 
-    public IPAddress(String ipAddress) {
+    protected IPAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
 
