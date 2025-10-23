@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -35,7 +36,7 @@ public class ChangeLog {
     private LocalDateTime createdAt;
 
     @Builder
-    public ChangeLog(ChangeLogType type, String employeeNumber, String memo, String ipAddress) {
+    public ChangeLog(ChangeLogType type, String employeeNumber, @Nullable String memo, String ipAddress) {
         this.type = Objects.requireNonNull(type, "ChangeLogType은 null일 수 없습니다.");
         this.employeeNumber = Objects.requireNonNull(employeeNumber, "사원 번호는 null일 수 없습니다.");
         this.memo = memo;
