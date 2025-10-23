@@ -3,10 +3,9 @@ package com.team2.hrbank.employee.domain;
 import com.team2.hrbank.employee.domain.exception.EmployeeNameEmptyException;
 import com.team2.hrbank.employee.domain.exception.EmployeePositionEmptyException;
 import jakarta.persistence.*;
-import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.Objects;
 
 @Entity
 @Table(uniqueConstraints = {
@@ -15,12 +14,11 @@ import java.util.Optional;
 })
 public class Employee {
 
-    @Nullable
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String name;
 
     @Embedded
@@ -42,91 +40,105 @@ public class Employee {
     @Column(nullable = false)
     private EmployeeStatus status;
 
-    @Nullable
-    private Long profileImageId;
-
     @Deprecated(since = "JPA 명세에 의해 필요함")
     protected Employee() {
     }
 
-    protected Employee(
-            @Nullable Long id,
+    private Employee(
+            Long id,
             String name,
             EmployeeEmail email,
             EmployeeNumber employeeNumber,
             Long departmentId,
             String position,
             LocalDate hireDate,
-            EmployeeStatus status,
-            @Nullable Long profileImageId
+            EmployeeStatus status
     ) {
         this.id = id;
-        this.name = this.requireName(name.trim());
+        this.name = Employee.requireName(name.trim());
         this.email = email;
         this.employeeNumber = employeeNumber;
         this.departmentId = departmentId;
-        this.position = this.requirePosition(position.trim());
+        this.position = Employee.requirePosition(position.trim());
         this.hireDate = hireDate;
         this.status = status;
-        this.profileImageId = profileImageId;
     }
 
-    public Employee updateName(String newName) {
-        this.name = requireName(newName.trim());
+    private Employee(
+            String name,
+            EmployeeEmail email,
+            EmployeeNumber employeeNumber,
+            Long departmentId,
+            String position,
+            LocalDate hireDate,
+            EmployeeStatus status
+    ) {
+        this(
+                null,
+                name,
+                email,
+                employeeNumber,
+                departmentId,
+                position,
+                hireDate,
+                status
+        );
+    }
+
+    public static Employee from(EmployeeContext context) {
+        return new Employee(
+                Objects.requireNonNull(context.name()),
+                Objects.requireNonNull(context.email()),
+                EmployeeNumber.generate(),
+                Objects.requireNonNull(context.departmentId()),
+                Objects.requireNonNull(context.position()),
+                Objects.requireNonNull(context.hireDate()),
+                EmployeeStatus.ACTIVE
+        );
+    }
+
+    public EmployeeContext save() {
+        return new EmployeeContext()
+                .id(this.id)
+                .name(this.name)
+                .email(this.email)
+                .employeeNumber(this.employeeNumber)
+                .departmentId(this.departmentId)
+                .position(this.position)
+                .hireDate(this.hireDate)
+                .status(this.status);
+    }
+
+    public Employee load(EmployeeContext context) {
+        this.name = context.name() == null ? this.name : Employee.requireName(context.name());
+        this.email = context.email() == null ? this.email : context.email();
+        this.employeeNumber = context.employeeNumber() == null ? this.employeeNumber : context.employeeNumber();
+        this.departmentId = context.departmentId() == null ? this.departmentId : context.departmentId();
+        this.position = context.position() == null ? this.position : Employee.requirePosition(context.position());
+        this.hireDate = context.hireDate() == null ? this.hireDate : context.hireDate();
+        this.status = context.status() == null ? this.status : context.status();
         return this;
     }
 
-    public Employee updateEmail(EmployeeEmail newEmail) {
-        this.email = newEmail;
-        return this;
-    }
-
-    public Employee updateDepartmentId(Long newDepartmentId) {
-        this.departmentId = newDepartmentId;
-        return this;
-    }
-
-    public Employee updatePosition(String newPosition) {
-        this.position = requirePosition(newPosition.trim());
-        return this;
-    }
-
-    public Employee updateHireDate(LocalDate newHireDate) {
-        this.hireDate = newHireDate;
-        return this;
-    }
-
-    public Employee updateStatus(EmployeeStatus newStatus) {
-        this.status = newStatus;
-        return this;
-    }
-
-    public Employee updateProfileImageId(@Nullable Long newProfileImageId) {
-        this.profileImageId = newProfileImageId;
-        return this;
-    }
-
-    private String requireName(String name) {
-        if (name.isBlank()) {
-            throw new EmployeeNameEmptyException();
-        }
-        return name;
-    }
-
-    private String requirePosition(String position) {
-        if (position.isBlank()) {
-            throw new EmployeePositionEmptyException();
-        }
-        return position;
+    public Long getId() {
+        return id;
     }
 
     public Long getDepartmentId() {
         return departmentId;
     }
 
-    public Optional<Long> getProfileImageId() {
-        return Optional.ofNullable(profileImageId);
+    private static String requireName(String name) {
+        if (name.isBlank()) {
+            throw new EmployeeNameEmptyException();
+        }
+        return name;
+    }
+
+    private static String requirePosition(String position) {
+        if (position.isBlank()) {
+            throw new EmployeePositionEmptyException();
+        }
+        return position;
     }
 }
-
-
