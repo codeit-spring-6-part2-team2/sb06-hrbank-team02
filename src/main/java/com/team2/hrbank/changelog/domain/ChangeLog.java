@@ -29,8 +29,8 @@ public class ChangeLog {
 
     private String memo;
 
-    @Column(nullable = false)
-    private String ipAddress;
+    @Embedded
+    private IPAddress ipAddress;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -40,7 +40,7 @@ public class ChangeLog {
         this.type = Objects.requireNonNull(type, "ChangeLogType은 null일 수 없습니다.");
         this.employeeNumber = Objects.requireNonNull(employeeNumber, "사원 번호는 null일 수 없습니다.");
         this.memo = memo;
-        this.ipAddress = Objects.requireNonNull(ipAddress, "IP 주소는 null일 수 없습니다.");
+        this.ipAddress = IPAddress.of(ipAddress);
     }
 
     @PrePersist
