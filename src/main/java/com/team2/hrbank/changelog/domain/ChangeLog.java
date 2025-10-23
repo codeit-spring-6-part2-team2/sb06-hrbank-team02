@@ -41,6 +41,10 @@ public class ChangeLog {
         this.employeeNumber = Objects.requireNonNull(employeeNumber, "사원 번호는 null일 수 없습니다.");
         this.memo = memo;
         this.ipAddress = Objects.requireNonNull(ipAddress, "IP 주소는 null일 수 없습니다.");
+    }
+
+    @PrePersist
+    protected void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
 
