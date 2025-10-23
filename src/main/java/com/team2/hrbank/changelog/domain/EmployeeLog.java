@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "employee_log")
@@ -41,23 +42,19 @@ public class EmployeeLog {
     private String email;
 
     @Column(nullable = false)
-    private String employeeNumber;
-
-    @Column(nullable = false)
     private String status;
 
     @Builder
     public EmployeeLog(EmployeeLogType type, Long changeLogId, LocalDateTime hireDate, String name,
-                       String position, String department, String email, String employeeNumber, String status) {
-        this.type = type;
-        this.changeLogId = changeLogId;
-        this.hireDate = hireDate;
-        this.name = name;
-        this.position = position;
-        this.department = department;
-        this.email = email;
-        this.employeeNumber = employeeNumber;
-        this.status = status;
+                       String position, String department, String email, String status) {
+        this.type = Objects.requireNonNull(type);
+        this.changeLogId = Objects.requireNonNull(changeLogId);
+        this.hireDate = Objects.requireNonNull(hireDate);
+        this.name = Objects.requireNonNull(name);
+        this.position = Objects.requireNonNull(position);
+        this.department = Objects.requireNonNull(department);
+        this.email = Objects.requireNonNull(email);
+        this.status = Objects.requireNonNull(status);
     }
 
 }

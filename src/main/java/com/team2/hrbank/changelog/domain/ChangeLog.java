@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "change_log")
@@ -35,10 +36,10 @@ public class ChangeLog {
 
     @Builder
     public ChangeLog(ChangeLogType type, String employeeNumber, String memo, String ipAddress) {
-        this.type = type;
-        this.employeeNumber = employeeNumber;
+        this.type = Objects.requireNonNull(type);
+        this.employeeNumber = Objects.requireNonNull(employeeNumber);
         this.memo = memo;
-        this.ipAddress = ipAddress;
+        this.ipAddress = Objects.requireNonNull(ipAddress);
         this.createdAt = LocalDateTime.now();
     }
 
