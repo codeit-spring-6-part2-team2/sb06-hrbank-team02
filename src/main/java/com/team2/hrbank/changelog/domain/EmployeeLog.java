@@ -17,6 +17,13 @@ public class EmployeeLog {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EmployeeLogType type;
+
+    @Column(nullable = false)
+    private Long changeLogId;
+
     @Column(nullable = false)
     private LocalDateTime hireDate;
 
