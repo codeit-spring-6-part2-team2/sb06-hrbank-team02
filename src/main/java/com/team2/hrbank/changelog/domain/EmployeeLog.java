@@ -47,14 +47,14 @@ public class EmployeeLog {
     @Builder
     public EmployeeLog(EmployeeLogType type, Long changeLogId, LocalDateTime hireDate, String name,
                        String position, String department, String email, String status) {
-        this.type = Objects.requireNonNull(type);
-        this.changeLogId = Objects.requireNonNull(changeLogId);
-        this.hireDate = Objects.requireNonNull(hireDate);
-        this.name = Objects.requireNonNull(name);
-        this.position = Objects.requireNonNull(position);
-        this.department = Objects.requireNonNull(department);
-        this.email = Objects.requireNonNull(email);
-        this.status = Objects.requireNonNull(status);
+        this.type = Objects.requireNonNull(type, "EmployeeLogType은 null일 수 없습니다.");
+        this.changeLogId = Objects.requireNonNull(changeLogId, "ChangeLog ID는 null일 수 없습니다.");
+        this.hireDate = Objects.requireNonNull(hireDate, "입사일은 null일 수 없습니다.");
+        this.name = Objects.requireNonNull(name, "이름은 null일 수 없습니다.");
+        this.position = Objects.requireNonNull(position, "직급은 null일 수 없습니다.");
+        this.department = Objects.requireNonNull(department, "부서는 null일 수 없습니다.");
+        this.email = Objects.requireNonNull(email, "이메일은 null일 수 없습니다.");
+        this.status = Objects.requireNonNull(status, "상태는 null일 수 없습니다.");
     }
 
 }

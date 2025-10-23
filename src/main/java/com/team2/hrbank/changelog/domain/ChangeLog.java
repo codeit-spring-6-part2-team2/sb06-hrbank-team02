@@ -36,10 +36,10 @@ public class ChangeLog {
 
     @Builder
     public ChangeLog(ChangeLogType type, String employeeNumber, String memo, String ipAddress) {
-        this.type = Objects.requireNonNull(type);
-        this.employeeNumber = Objects.requireNonNull(employeeNumber);
+        this.type = Objects.requireNonNull(type, "ChangeLogType은 null일 수 없습니다.");
+        this.employeeNumber = Objects.requireNonNull(employeeNumber, "사원 번호는 null일 수 없습니다.");
         this.memo = memo;
-        this.ipAddress = Objects.requireNonNull(ipAddress);
+        this.ipAddress = Objects.requireNonNull(ipAddress, "IP 주소는 null일 수 없습니다.");
         this.createdAt = LocalDateTime.now();
     }
 
