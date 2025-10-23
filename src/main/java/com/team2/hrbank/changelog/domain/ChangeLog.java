@@ -30,7 +30,7 @@ public class ChangeLog {
     @Column(nullable = false)
     private String ipAddress;
 
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @Builder
