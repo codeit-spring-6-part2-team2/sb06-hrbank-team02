@@ -6,7 +6,7 @@ import java.util.List;
 
 @Builder
 public record CursorPageResponseChangeLogDto(
-        List<ChangeLogDto> contents,
+        List<ChangeLogDto> content,
         String nextCursor,
         Long nextIdAfter,
         Integer size,
