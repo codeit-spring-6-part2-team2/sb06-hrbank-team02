@@ -11,22 +11,7 @@ public class EmployeeLogDto {
     }
 
     @Builder
-    public record CreateLogRequest(
-            LocalDateTime hireDate,
-            String name,
-            String position,
-            String department,
-            String email,
-            String employeeNumber,
-            String status,
-            //ChangeLog의 필드
-            @Nullable
-            String memo,
-            String ipAddress
-    ) {}
-
-    @Builder
-    public record CreateBeforeLogRequest(
+    public record EmployeeBaseInfo(
             LocalDateTime hireDate,
             String name,
             String position,
@@ -36,18 +21,39 @@ public class EmployeeLogDto {
             String status
     ) {}
 
-    @Builder
-    public record CreateDeleteLogRequest(
-            LocalDateTime hireDate,
-            String name,
-            String position,
-            String department,
-            String email,
-            String employeeNumber,
-            String status,
+    public record LogMetadata(
             @Nullable
             String memo,
             String ipAddress
+    ) {
+
+        public static LogMetadata withMemo(String ipAddress, String memo) {
+            return new LogMetadata(memo, ipAddress);
+        }
+
+        public static LogMetadata withoutMemo(String ipAddress) {
+            return new LogMetadata(null, ipAddress);
+        }
+
+    }
+
+    @Builder
+    public record CreateLogRequest(
+            EmployeeBaseInfo employeeInfo,
+            LogMetadata metadata
+    ) {}
+
+    @Builder
+    public record CreateUpdateLogRequest(
+            EmployeeBaseInfo before,
+            EmployeeBaseInfo after,
+            LogMetadata metadata
+    ) {}
+
+    @Builder
+    public record CreateDeleteLogRequest(
+            EmployeeBaseInfo employeeInfo,
+            LogMetadata metadata
     ) {}
 
 }

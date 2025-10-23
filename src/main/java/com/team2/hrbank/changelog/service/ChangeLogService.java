@@ -15,7 +15,7 @@ public interface ChangeLogService {
 
     ChangeLogDto addCreateEmployeeLog(EmployeeLogDto.CreateLogRequest request);
 
-    ChangeLogDto addUpdateEmployeeLog(EmployeeLogDto.CreateBeforeLogRequest before, EmployeeLogDto.CreateLogRequest after);
+    ChangeLogDto addUpdateEmployeeLog(EmployeeLogDto.CreateUpdateLogRequest request);
 
     ChangeLogDto addDeleteEmployeeLog(EmployeeLogDto.CreateDeleteLogRequest request);
 
