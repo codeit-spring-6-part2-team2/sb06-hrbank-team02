@@ -37,8 +37,8 @@ public class ChangeLog {
 
     @Builder
     public ChangeLog(ChangeLogType type, String employeeNumber, @Nullable String memo, String ipAddress) {
-        this.type = Objects.requireNonNull(type, "ChangeLogType은 null일 수 없습니다.");
-        this.employeeNumber = Objects.requireNonNull(employeeNumber, "사원 번호는 null일 수 없습니다.");
+        this.type = type;
+        this.employeeNumber = employeeNumber;
         this.memo = memo;
         this.ipAddress = IPAddress.of(ipAddress);
     }
