@@ -38,8 +38,8 @@ public class EmployeeLog {
     @Column(nullable = false)
     private String department;
 
-    @Column(nullable = false)
-    private String email;
+    @Embedded
+    private EmployeeEmail email;
 
     @Column(nullable = false)
     private String status;
@@ -53,7 +53,7 @@ public class EmployeeLog {
         this.name = Objects.requireNonNull(name, "이름은 null일 수 없습니다.");
         this.position = Objects.requireNonNull(position, "직급은 null일 수 없습니다.");
         this.department = Objects.requireNonNull(department, "부서는 null일 수 없습니다.");
-        this.email = Objects.requireNonNull(email, "이메일은 null일 수 없습니다.");
+        this.email = EmployeeEmail.of(email);
         this.status = Objects.requireNonNull(status, "상태는 null일 수 없습니다.");
     }
 
