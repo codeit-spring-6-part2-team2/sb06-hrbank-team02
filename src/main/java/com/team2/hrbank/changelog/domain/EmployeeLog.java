@@ -2,6 +2,7 @@ package com.team2.hrbank.changelog.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -44,5 +45,19 @@ public class EmployeeLog {
 
     @Column(nullable = false)
     private String status;
+
+    @Builder
+    public EmployeeLog(EmployeeLogType type, Long changeLogId, LocalDateTime hireDate, String name,
+                       String position, String department, String email, String employeeNumber, String status) {
+        this.type = type;
+        this.changeLogId = changeLogId;
+        this.hireDate = hireDate;
+        this.name = name;
+        this.position = position;
+        this.department = department;
+        this.email = email;
+        this.employeeNumber = employeeNumber;
+        this.status = status;
+    }
 
 }

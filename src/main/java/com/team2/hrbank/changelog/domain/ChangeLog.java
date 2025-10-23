@@ -2,6 +2,7 @@ package com.team2.hrbank.changelog.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -32,5 +33,13 @@ public class ChangeLog {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @Builder
+    public ChangeLog(ChangeLogType type, String employeeNumber, String memo, String ipAddress) {
+        this.type = type;
+        this.employeeNumber = employeeNumber;
+        this.memo = memo;
+        this.ipAddress = ipAddress;
+        this.createdAt = LocalDateTime.now();
+    }
 
 }
