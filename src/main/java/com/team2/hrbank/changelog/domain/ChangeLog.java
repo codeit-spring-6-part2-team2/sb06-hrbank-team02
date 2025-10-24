@@ -33,7 +33,7 @@ public class ChangeLog {
     private IPAddress ipAddress;
 
     @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime at;
 
     @Builder
     public ChangeLog(ChangeLogType type, String employeeNumber, @Nullable String memo, String ipAddress) {
@@ -45,7 +45,7 @@ public class ChangeLog {
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
+        this.at = LocalDateTime.now();
     }
 
 }
