@@ -18,7 +18,9 @@ public class EmployeeLogDto {
             String department,
             String email,
             String employeeNumber,
-            String status
+            String status,
+            //퇴사 여부를 판단하기 위한 필드
+            boolean isRetired
     ) {}
 
     public record LogMetadata(
@@ -43,7 +45,7 @@ public class EmployeeLogDto {
             LogMetadata metadata
     ) {}
 
-    @Builder
+    /*@Builder
     public record CreateUpdateLogRequest(
             EmployeeBaseInfo before,
             EmployeeBaseInfo after,
@@ -54,6 +56,6 @@ public class EmployeeLogDto {
     public record CreateDeleteLogRequest(
             EmployeeBaseInfo employeeInfo,
             LogMetadata metadata
-    ) {}
+    ) {}*/
 
 }

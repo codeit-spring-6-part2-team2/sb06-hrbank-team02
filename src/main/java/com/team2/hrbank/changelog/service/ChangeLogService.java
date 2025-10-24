@@ -13,10 +13,6 @@ public interface ChangeLogService {
 
     Long getTotalCount(LocalDateTime fromDate, LocalDateTime toDate);
 
-    ChangeLogDto addCreateEmployeeLog(EmployeeLogDto.CreateLogRequest request);
-
-    ChangeLogDto addUpdateEmployeeLog(EmployeeLogDto.CreateUpdateLogRequest request);
-
-    ChangeLogDto addDeleteEmployeeLog(EmployeeLogDto.CreateDeleteLogRequest request);
+    ChangeLogDto addEmployeeLog(EmployeeLogDto.CreateLogRequest request);
 
 }
