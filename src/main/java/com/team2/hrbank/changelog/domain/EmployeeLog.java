@@ -5,9 +5,9 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
 @Table(name = "employee_log")
@@ -15,6 +15,7 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, onConstructor_ = @Deprecated)
 public class EmployeeLog {
 
+    @Nullable
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

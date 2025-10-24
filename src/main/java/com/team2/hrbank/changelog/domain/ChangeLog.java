@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
 @Table(name = "change_log")
@@ -16,6 +15,7 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, onConstructor_ = @Deprecated)
 public class ChangeLog {
 
+    @Nullable
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
