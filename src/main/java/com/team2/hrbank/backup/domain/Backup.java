@@ -30,7 +30,6 @@ public class Backup {
     @Enumerated(EnumType.STRING)
     private BackupStatus status;
 
-    @Getter(onMethod_ = { @Nullable })
     @Nullable
     @Column
     private Long fileId;
@@ -52,5 +51,13 @@ public class Backup {
         this.endedAt = endedAt;
         this.status = status;
         this.fileId = fileId;
+    }
+
+    public Optional<Long> getId() {
+        return Optional.ofNullable(id);
+    }
+
+    public Optional<Long> getFileId() {
+        return Optional.ofNullable(fileId);
     }
 }
