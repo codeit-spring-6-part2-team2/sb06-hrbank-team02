@@ -45,7 +45,7 @@ public class EmployeeLogDto {
             LogMetadata metadata
     ) {}
 
-    /*@Builder
+    @Builder
     public record CreateUpdateLogRequest(
             EmployeeBaseInfo before,
             EmployeeBaseInfo after,
@@ -56,6 +56,6 @@ public class EmployeeLogDto {
     public record CreateDeleteLogRequest(
             EmployeeBaseInfo employeeInfo,
             LogMetadata metadata
-    ) {}*/
+    ) {}
 
 }

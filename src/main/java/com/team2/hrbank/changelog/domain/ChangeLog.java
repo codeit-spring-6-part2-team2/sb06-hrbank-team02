@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "change_log")
@@ -35,12 +37,16 @@ public class ChangeLog {
     @Column(nullable = false, updatable = false)
     private LocalDateTime at;
 
+    @OneToMany
+    private final List<ChangeLogDetail> detailList = new ArrayList<>();
+
     @Builder
-    public ChangeLog(ChangeLogType type, String employeeNumber, @Nullable String memo, IPAddress ipAddress) {
+    public ChangeLog(ChangeLogType type, String employeeNumber, @Nullable String memo, IPAddress ipAddress, List<ChangeLogDetail> detaillist) {
         this.type = type;
         this.employeeNumber = employeeNumber;
         this.memo = memo;
         this.ipAddress = ipAddress;
+        this.detailList.addAll(detaillist);
     }
 
     @PrePersist
