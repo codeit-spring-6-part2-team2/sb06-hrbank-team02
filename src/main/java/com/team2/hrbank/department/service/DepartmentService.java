@@ -1,4 +1,4 @@
-package com.team2.hrbank.department;
+package com.team2.hrbank.department.service;
 
 import com.team2.hrbank.department.dto.CursorPageResponseDepartmentDto;
 import com.team2.hrbank.department.dto.DepartmentCreateRequest;
