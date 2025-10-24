@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Table(name = "files")
 @Entity
-public class File {
+public class FileEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
