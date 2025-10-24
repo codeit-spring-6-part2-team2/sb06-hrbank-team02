@@ -19,8 +19,8 @@ public class EmployeeLogDto {
             String email,
             String employeeNumber,
             String status,
-            //퇴사 여부를 판단하기 위한 필드
-            boolean isRetired
+            //삭제 여부를 판단하기 위한 필드
+            boolean isDeleted
     ) {}
 
     public record LogMetadata(
