@@ -26,7 +26,7 @@ public class ChangeLogDetail {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
-    private ChangeLog changeLogId;
+    private ChangeLog changeLog;
 
     @Column(nullable = false)
     private LocalDateTime hireDate;
@@ -47,10 +47,10 @@ public class ChangeLogDetail {
     private String status;
 
     @Builder
-    public ChangeLogDetail(EmployeeLogType type, ChangeLog changeLogId, LocalDateTime hireDate, String name,
+    public ChangeLogDetail(EmployeeLogType type, ChangeLog changeLog, LocalDateTime hireDate, String name,
                            String position, String department, EmployeeEmail email, String status) {
         this.type = type;
-        this.changeLogId = changeLogId;
+        this.changeLog = changeLog;
         this.hireDate = hireDate;
         this.name = name;
         this.position = position;

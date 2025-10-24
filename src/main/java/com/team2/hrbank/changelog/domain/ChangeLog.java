@@ -37,7 +37,7 @@ public class ChangeLog {
     @Column(nullable = false, updatable = false)
     private LocalDateTime at;
 
-    @OneToMany(mappedBy = "changeLogId", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "changeLog", cascade = CascadeType.REMOVE)
     private final List<ChangeLogDetail> detailList = new ArrayList<>();
 
     @Builder
