@@ -24,8 +24,9 @@ public class ChangeLogDetail {
     @Column(nullable = false)
     private EmployeeLogType type;
 
-    @Column(nullable = false)
-    private Long changeLogId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    private ChangeLog changeLogId;
 
     @Column(nullable = false)
     private LocalDateTime hireDate;
@@ -46,7 +47,7 @@ public class ChangeLogDetail {
     private String status;
 
     @Builder
-    public ChangeLogDetail(EmployeeLogType type, Long changeLogId, LocalDateTime hireDate, String name,
+    public ChangeLogDetail(EmployeeLogType type, ChangeLog changeLogId, LocalDateTime hireDate, String name,
                            String position, String department, String email, String status) {
         this.type = type;
         this.changeLogId = changeLogId;
