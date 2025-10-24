@@ -49,6 +49,14 @@ public class ChangeLog {
         this.detailList.addAll(detaillist);
     }
 
+    public void addDetail(ChangeLogDetail detail) {
+        this.detailList.add(detail);
+    }
+
+    public void addDetails(List<ChangeLogDetail> details) {
+        this.detailList.addAll(details);
+    }
+
     @PrePersist
     protected void onCreate() {
         this.at = LocalDateTime.now();
