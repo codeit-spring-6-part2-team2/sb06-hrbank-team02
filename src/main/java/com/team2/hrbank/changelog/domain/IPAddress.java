@@ -28,15 +28,17 @@ public class IPAddress {
         this.ipAddress = ipAddress;
     }
 
-    private static boolean isValidAddress(String ipAddress) {
-        return IPV4_PATTERN.matcher(ipAddress).matches() || IPV6_PATTERN.matcher(ipAddress).matches();
+    private static void isValidAddress(String ipAddress) {
+
+        if (!IPV4_PATTERN.matcher(ipAddress).matches() && !IPV6_PATTERN.matcher(ipAddress).matches()) {
+            throw new IllegalArgumentException("유효하지 않은 IP 주소입니다: " + ipAddress);
+        }
+
     }
 
     public static IPAddress of(String ipAddress) {
 
-        if (ipAddress == null || !isValidAddress(ipAddress)) {
-            throw new IllegalArgumentException("유효하지 않은 IP 주소입니다: " + ipAddress);
-        }
+        isValidAddress(ipAddress);
 
         return new IPAddress(ipAddress);
 
