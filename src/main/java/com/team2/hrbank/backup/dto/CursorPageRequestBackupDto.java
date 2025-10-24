@@ -1,17 +1,16 @@
 package com.team2.hrbank.backup.dto;
 
 import com.team2.hrbank.backup.domain.BackupStatus;
-import jakarta.persistence.*;
-import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
 
-public record BackupDto(
-        Long id,
+public record CursorPageRequestBackupDto(
+        String cursor,
+        Long idAfter,
         String worker,
         LocalDateTime startedAt,
-        LocalDateTime endedAt,
         BackupStatus status,
-        Long fileId
+        String sortBy,
+        String order
 ) {
 }
