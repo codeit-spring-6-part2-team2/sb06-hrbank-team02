@@ -40,7 +40,7 @@ public class ChangeLog {
         this.type = type;
         this.employeeNumber = employeeNumber;
         this.memo = memo;
-        this.ipAddress = IPAddress.of(ipAddress);
+        this.ipAddress = new IPAddress(ipAddress);
     }
 
     @PrePersist

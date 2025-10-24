@@ -55,7 +55,7 @@ public class ChangeLogDetail {
         this.name = name;
         this.position = position;
         this.department = department;
-        this.email = EmployeeEmail.of(email);
+        this.email = new EmployeeEmail(email);
         this.status = status;
     }
 
