@@ -18,16 +18,19 @@ public class EmployeeEmail {
         this.email = email;
     }
 
-    public static boolean isValidEmail(String email) {
+    public static void validateEmail(String email) {
+
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        return email != null && email.matches(emailRegex);
+
+        if (email == null || !email.matches(emailRegex)) {
+            throw new IllegalArgumentException("유효하지 않은 이메일 주소입니다: " + email);
+        }
+
     }
 
     public static EmployeeEmail of(String email) {
 
-        if (!isValidEmail(email)) {
-            throw new IllegalArgumentException("유효하지 않은 이메일 주소입니다: " + email);
-        }
+        validateEmail(email);
 
         return new EmployeeEmail(email);
 
