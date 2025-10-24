@@ -48,14 +48,14 @@ public class ChangeLogDetail {
 
     @Builder
     public ChangeLogDetail(EmployeeLogType type, ChangeLog changeLogId, LocalDateTime hireDate, String name,
-                           String position, String department, String email, String status) {
+                           String position, String department, EmployeeEmail email, String status) {
         this.type = type;
         this.changeLogId = changeLogId;
         this.hireDate = hireDate;
         this.name = name;
         this.position = position;
         this.department = department;
-        this.email = new EmployeeEmail(email);
+        this.email = email;
         this.status = status;
     }
 

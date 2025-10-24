@@ -36,11 +36,11 @@ public class ChangeLog {
     private LocalDateTime at;
 
     @Builder
-    public ChangeLog(ChangeLogType type, String employeeNumber, @Nullable String memo, String ipAddress) {
+    public ChangeLog(ChangeLogType type, String employeeNumber, @Nullable String memo, IPAddress ipAddress) {
         this.type = type;
         this.employeeNumber = employeeNumber;
         this.memo = memo;
-        this.ipAddress = new IPAddress(ipAddress);
+        this.ipAddress = ipAddress;
     }
 
     @PrePersist
