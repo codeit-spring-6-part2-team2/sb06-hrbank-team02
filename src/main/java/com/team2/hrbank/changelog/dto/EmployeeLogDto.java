@@ -14,35 +14,12 @@ public class EmployeeLogDto {
     public record CreateLogRequest(
             // Employee info
             LocalDateTime hireDate,
-            String name,
-            String position,
-            String department,
-            String email,
+            String employeeName,
+            String employeePosition,
+            String departmentName,
+            String employeeEmail,
             String employeeNumber,
-            String status,
-            // metadata
-            @Nullable String memo,
-            String ipAddress
-    ) {}
-
-    @Builder
-    public record CreateUpdateLogRequest(
-            // Before Employee info
-            LocalDateTime beforeHireDate,
-            String beforeName,
-            String beforePosition,
-            String beforeDepartment,
-            String beforeEmail,
-            String beforeEmployeeNumber,
-            String beforeStatus,
-            // After Employee info
-            LocalDateTime afterHireDate,
-            String afterName,
-            String afterPosition,
-            String afterDepartment,
-            String afterEmail,
-            String afterEmployeeNumber,
-            String afterStatus,
+            String employeeStatus,
             // metadata
             @Nullable String memo,
             String ipAddress
@@ -51,13 +28,7 @@ public class EmployeeLogDto {
     @Builder
     public record CreateDeleteLogRequest(
             // Employee info
-            LocalDateTime hireDate,
-            String name,
-            String position,
-            String department,
-            String email,
             String employeeNumber,
-            String status,
             // metadata
             @Nullable String memo,
             String ipAddress
