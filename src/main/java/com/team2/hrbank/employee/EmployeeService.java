@@ -26,4 +26,6 @@ public interface EmployeeService {
     Long getEmployeeCount(EmployeeStatus status, LocalDate fromDate, LocalDate toDate);
 
     BackupEmployeePageResponseDto getEmployees(BackupEmployeePageRequestDto employee);
+
+    List<DepartmentEmployeeCountDto> findEmployeeCountsByDepartmentId();
 }
