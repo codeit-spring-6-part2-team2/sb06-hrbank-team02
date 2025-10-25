@@ -20,7 +20,6 @@ public class EmployeeLogDto {
             String email,
             String employeeNumber,
             String status,
-            boolean isDeleted,
             // metadata
             @Nullable String memo,
             String ipAddress
@@ -36,7 +35,6 @@ public class EmployeeLogDto {
             String beforeEmail,
             String beforeEmployeeNumber,
             String beforeStatus,
-            boolean beforeIsDeleted,
             // After Employee info
             LocalDateTime afterHireDate,
             String afterName,
@@ -45,7 +43,6 @@ public class EmployeeLogDto {
             String afterEmail,
             String afterEmployeeNumber,
             String afterStatus,
-            boolean afterIsDeleted,
             // metadata
             @Nullable String memo,
             String ipAddress
@@ -61,7 +58,6 @@ public class EmployeeLogDto {
             String email,
             String employeeNumber,
             String status,
-            boolean isDeleted,
             // metadata
             @Nullable String memo,
             String ipAddress
