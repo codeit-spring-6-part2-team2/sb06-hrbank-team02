@@ -13,6 +13,9 @@ public interface ChangeLogService {
 
     Long getTotalCount(LocalDateTime fromDate, LocalDateTime toDate);
 
+    //BackUp 모듈의 백업 여부 판단을 위한 최근 로그 일자 조회
+    LocalDateTime getRecentLogDate();
+
     ChangeLogDto save(EmployeeLogDto.CreateLogRequest request);
 
     ChangeLogDto save(EmployeeLogDto.CreateUpdateLogRequest request);
