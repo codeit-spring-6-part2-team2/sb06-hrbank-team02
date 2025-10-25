@@ -1,6 +1,6 @@
 package com.team2.hrbank.backup.service;
 
-import com.team2.hrbank.backup.dto.BackupCreateRequest;
+import com.team2.hrbank.backup.dto.BackupCreateRequestDto;
 import com.team2.hrbank.backup.dto.BackupDto;
 import com.team2.hrbank.backup.dto.CursorPageRequestBackupDto;
 import com.team2.hrbank.backup.dto.CursorPageResponseBackupDto;
@@ -8,11 +8,19 @@ import com.team2.hrbank.backup.dto.CursorPageResponseBackupDto;
 public interface BackupService {
 
     // 데이터 백업 생성
-    BackupDto addBackup(BackupCreateRequest request);
+    BackupDto addBackup(BackupCreateRequestDto request);
 
     // 데이터 백업 이력 목록 조회
     CursorPageResponseBackupDto getBackups(CursorPageRequestBackupDto request);
 
     // 최근 백업 정보 조회
     BackupDto getRecentBackup();
+
+    // 백업 실행
+    boolean needsBackup();
+    void executeBackup(Long backupId);
+    void completeBackup(Long backupId, Long fileId);
+    void failBackup(Long backupId, Long fileId);
+
+    void performScheduledBackup();
 }

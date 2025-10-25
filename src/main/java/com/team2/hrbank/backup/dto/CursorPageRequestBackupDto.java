@@ -8,7 +8,8 @@ public record CursorPageRequestBackupDto(
         String cursor,
         Long idAfter,
         String worker,
-        LocalDateTime startedAt,
+        LocalDateTime startedAtFrom,
+        LocalDateTime startedAtTo,
         BackupStatus status,
         String sortBy,
         String order
