@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    EmployeeDto getEmployees();
+    EmployeeDto getEmployees(CursorPageRequestEmployeeDto employee);
 
     EmployeeDto addEmployee(EmployeeCreateRequest employee, MultipartFile profile);
 
