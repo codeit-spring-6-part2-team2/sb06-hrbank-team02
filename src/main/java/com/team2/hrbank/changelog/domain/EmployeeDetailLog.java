@@ -25,7 +25,7 @@ public class EmployeeDetailLog {
     private EmployeeLogType type;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name = "change_log_id")
     private ChangeLog changeLog;
 
     @Column(nullable = false)
