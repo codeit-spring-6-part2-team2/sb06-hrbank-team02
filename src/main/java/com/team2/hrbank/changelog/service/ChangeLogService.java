@@ -16,10 +16,10 @@ public interface ChangeLogService {
     //BackUp 모듈의 백업 여부 판단을 위한 최근 로그 일자 조회
     LocalDateTime getRecentLogDate();
 
-    ChangeLogDto save(EmployeeLogDto.CreateLogRequest request);
+    ChangeLogDto addEmployeeInsertLog(EmployeeLogDto.CreateLogRequest request);
 
-    ChangeLogDto save(EmployeeLogDto.CreateUpdateLogRequest request);
+    ChangeLogDto addEmployeeUpdateLog(EmployeeLogDto.CreateLogRequest request);
 
-    ChangeLogDto save(EmployeeLogDto.CreateDeleteLogRequest request);
+    ChangeLogDto addEmployeeDeleteLog(EmployeeLogDto.CreateDeleteLogRequest request);
 
 }
