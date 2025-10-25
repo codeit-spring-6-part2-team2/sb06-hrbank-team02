@@ -24,4 +24,6 @@ public interface EmployeeService {
     List<EmployeeDistributionDto> getEmployeeDistributions(String groupBy, EmployeeStatus status);
 
     Long getEmployeeCount(EmployeeStatus status, LocalDate fromDate, LocalDate toDate);
+
+    BackupEmployeePageResponseDto getEmployees(BackupEmployeePageRequestDto employee);
 }
