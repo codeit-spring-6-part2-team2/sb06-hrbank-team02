@@ -38,10 +38,10 @@ public class ChangeLog {
     private LocalDateTime at;
 
     @OneToMany(mappedBy = "changeLog", cascade = CascadeType.REMOVE)
-    private final List<ChangeLogDetail> detailList = new ArrayList<>();
+    private final List<EmployeeDetailLog> detailList = new ArrayList<>();
 
     @Builder
-    public ChangeLog(ChangeLogType type, String employeeNumber, @Nullable String memo, IPAddress ipAddress, List<ChangeLogDetail> detaillist) {
+    public ChangeLog(ChangeLogType type, String employeeNumber, @Nullable String memo, IPAddress ipAddress, List<EmployeeDetailLog> detaillist) {
         this.type = type;
         this.employeeNumber = employeeNumber;
         this.memo = memo;
@@ -49,11 +49,11 @@ public class ChangeLog {
         this.detailList.addAll(detaillist);
     }
 
-    public void addDetail(ChangeLogDetail detail) {
+    public void addDetail(EmployeeDetailLog detail) {
         this.detailList.add(detail);
     }
 
-    public void addDetails(List<ChangeLogDetail> details) {
+    public void addDetails(List<EmployeeDetailLog> details) {
         this.detailList.addAll(details);
     }
 

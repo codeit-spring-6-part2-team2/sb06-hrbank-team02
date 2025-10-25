@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "employee_log")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED, onConstructor_ = @Deprecated)
-public class ChangeLogDetail {
+public class EmployeeDetailLog {
 
     @Nullable
     @Id
@@ -47,8 +47,8 @@ public class ChangeLogDetail {
     private String status;
 
     @Builder
-    public ChangeLogDetail(EmployeeLogType type, ChangeLog changeLog, LocalDateTime hireDate, String name,
-                           String position, String department, EmployeeEmail email, String status) {
+    public EmployeeDetailLog(EmployeeLogType type, ChangeLog changeLog, LocalDateTime hireDate, String name,
+                             String position, String department, EmployeeEmail email, String status) {
         this.type = type;
         this.changeLog = changeLog;
         this.hireDate = hireDate;
