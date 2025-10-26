@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -20,16 +19,7 @@ import java.time.LocalDate;
 public class Department {
 
   @Id
-  @GeneratedValue(
-      strategy = GenerationType.SEQUENCE,
-      generator = "department_seq_generator"
-  )
-  @SequenceGenerator(
-      name = "department_seq_generator",
-      sequenceName = "department_seq",
-      initialValue = 1,
-      allocationSize = 50
-  )
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Long id;
 
   @Column(nullable = false, unique = true, length = 50)
