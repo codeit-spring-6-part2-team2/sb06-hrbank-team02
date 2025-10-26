@@ -1,5 +1,6 @@
 package com.team2.hrbank.department.domain;
 
+import com.team2.hrbank.department.dto.DepartmentUpdateRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,9 +39,9 @@ public class Department {
     this.establishedDate = establishedDate;
   }
 
-  public void update(String name, String description, LocalDate establishedDate) {
-    this.name = name;
-    this.description = description;
-    this.establishedDate = establishedDate;
+  public void update(DepartmentUpdateRequest request) {
+    this.name = request.name();
+    this.description = request.description();
+    this.establishedDate = request.establishedDate();
   }
 }
