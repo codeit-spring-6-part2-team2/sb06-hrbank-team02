@@ -1,5 +1,6 @@
 package com.team2.hrbank.backup.service;
 
+import com.team2.hrbank.backup.domain.BackupStatus;
 import com.team2.hrbank.backup.dto.BackupCreateRequestDto;
 import com.team2.hrbank.backup.dto.BackupDto;
 import com.team2.hrbank.backup.dto.CursorPageRequestBackupDto;
@@ -15,12 +16,6 @@ public interface BackupService {
 
     // 최근 백업 정보 조회
     BackupDto getRecentBackup();
-
-    // 백업 실행
-    boolean needsBackup();
-    void executeBackup(Long backupId);
-    void completeBackup(Long backupId, Long fileId);
-    void failBackup(Long backupId, Long fileId);
 
     void performScheduledBackup();
 }
