@@ -1,6 +1,5 @@
 package com.team2.hrbank.backup.service;
 
-import com.team2.hrbank.backup.domain.BackupStatus;
 import com.team2.hrbank.backup.dto.BackupCreateRequestDto;
 import com.team2.hrbank.backup.dto.BackupDto;
 import com.team2.hrbank.backup.dto.CursorPageRequestBackupDto;

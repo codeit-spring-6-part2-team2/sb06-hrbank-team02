@@ -1,8 +1,6 @@
 package com.team2.hrbank.backup.dto;
 
 import com.team2.hrbank.backup.domain.BackupStatus;
-import jakarta.persistence.*;
-import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
 
