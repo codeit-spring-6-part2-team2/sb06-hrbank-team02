@@ -16,4 +16,5 @@ public interface BackupService {
     // 최근 백업 정보 조회
     BackupDto getLatestBackup(BackupStatus status);
 
+    void performScheduledBackup();
 }
