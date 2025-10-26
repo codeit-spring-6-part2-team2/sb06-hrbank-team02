@@ -60,18 +60,26 @@ public class Backup {
                 .build();
     }
 
-    public Backup withDone(LocalDateTime endedAt, BackupStatus status, Long fileId) {
+    public Backup withCompleted(LocalDateTime endedAt, Long fileId) {
         return this.toBuilder()
                 .endedAt(endedAt)
-                .status(status)
+                .status(BackupStatus.COMPLETED)
                 .fileId(fileId)
                 .build();
     }
 
-    public Backup withSkipped(BackupStatus status) {
+    public Backup withFailed(LocalDateTime endedAt, Long fileId) {
+        return this.toBuilder()
+                .endedAt(endedAt)
+                .status(BackupStatus.FAILED)
+                .fileId(fileId)
+                .build();
+    }
+
+    public Backup withSkipped() {
         return this.toBuilder()
                 .endedAt(null)
-                .status(status)
+                .status(BackupStatus.SKIPPED)
                 .fileId(null)
                 .build();
     }
