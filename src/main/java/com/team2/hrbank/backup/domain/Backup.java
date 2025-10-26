@@ -51,36 +51,4 @@ public class Backup {
                 .status(this.status)
                 .fileId(this.fileId);
     }
-
-    public static Backup create(String worker) {
-        return Backup.builder()
-                .worker(worker)
-                .startedAt(LocalDateTime.now())
-                .status(BackupStatus.IN_PROGRESS)
-                .build();
-    }
-
-    public Backup withCompleted(LocalDateTime endedAt, Long fileId) {
-        return this.toBuilder()
-                .endedAt(endedAt)
-                .status(BackupStatus.COMPLETED)
-                .fileId(fileId)
-                .build();
-    }
-
-    public Backup withFailed(LocalDateTime endedAt, Long fileId) {
-        return this.toBuilder()
-                .endedAt(endedAt)
-                .status(BackupStatus.FAILED)
-                .fileId(fileId)
-                .build();
-    }
-
-    public Backup withSkipped() {
-        return this.toBuilder()
-                .endedAt(null)
-                .status(BackupStatus.SKIPPED)
-                .fileId(null)
-                .build();
-    }
 }
