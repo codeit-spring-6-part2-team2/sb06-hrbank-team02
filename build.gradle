@@ -48,7 +48,7 @@ dependencies {
 
     //querydsl
     implementation 'io.github.openfeign.querydsl:querydsl-jpa:7.0'
-    annotationProcessor 'io.github.openfeign.querydsl:querydsl-apt:7.0:jpa'
+    annotationProcessor 'io.github.openfeign.querydsl:querydsl-apt:7.0'
 }
 
 tasks.named('test') {
