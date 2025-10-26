@@ -9,8 +9,6 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Builder(toBuilder = true)
 public class Backup {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -29,26 +27,52 @@ public class Backup {
     @Nullable
     private Long fileId;
 
-    public Backup withCompleted(LocalDateTime endedAt, Long fileId) {
-        return this.toBuilder()
-                .endedAt(endedAt)
-                .fileId(fileId)
-                .status(BackupStatus.COMPLETED)
+    @Builder
+    private Backup(
+            String worker,
+            LocalDateTime startedAt,
+            @Nullable LocalDateTime endedAt,
+            BackupStatus status,
+            @Nullable Long fileId
+    ) {
+        this.id = null;
+        this.worker = worker;
+        this.startedAt = startedAt;
+        this.endedAt = endedAt;
+        this.status = status;
+        this.fileId = fileId;
+    }
+
+    public BackupBuilder toBuilder() {
+        return Backup.builder()
+                .worker(this.worker)
+                .startedAt(this.startedAt)
+                .endedAt(this.endedAt)
+                .status(this.status)
+                .fileId(this.fileId);
+    }
+
+    public static Backup create(String worker) {
+        return Backup.builder()
+                .worker(worker)
+                .startedAt(LocalDateTime.now())
+                .status(BackupStatus.IN_PROGRESS)
                 .build();
     }
 
-    public Backup withFailed(LocalDateTime endedAt, Long fileId) {
+    public Backup withDone(LocalDateTime endedAt, BackupStatus status, Long fileId) {
         return this.toBuilder()
                 .endedAt(endedAt)
+                .status(status)
                 .fileId(fileId)
-                .status(BackupStatus.FAILED)
                 .build();
     }
 
-    public Backup withSkipped(LocalDateTime endedAt) {
+    public Backup withSkipped(BackupStatus status) {
         return this.toBuilder()
-                .endedAt(endedAt)
-                .status(BackupStatus.SKIPPED)
+                .endedAt(null)
+                .status(status)
+                .fileId(null)
                 .build();
     }
 }
