@@ -29,7 +29,9 @@ public record DiffDto(
 
             if (before == null && after == null) {
                 return;
-            } else if (before == null) {
+            }
+
+            if (before == null) {
                 diffList.add(new DiffDto(propertyName, null, after));
             } else if (after == null) {
                 diffList.add(new DiffDto(propertyName, before, null));
