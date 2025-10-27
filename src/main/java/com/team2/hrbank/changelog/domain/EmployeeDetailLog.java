@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.jspecify.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "employee_log")
@@ -29,7 +29,7 @@ public class EmployeeDetailLog {
     private ChangeLog changeLog;
 
     @Column(nullable = false)
-    private LocalDateTime hireDate;
+    private LocalDate hireDate;
 
     @Column(nullable = false)
     private String name;
@@ -47,7 +47,7 @@ public class EmployeeDetailLog {
     private String status;
 
     @Builder
-    public EmployeeDetailLog(EmployeeLogType type, ChangeLog changeLog, LocalDateTime hireDate, String name,
+    public EmployeeDetailLog(EmployeeLogType type, ChangeLog changeLog, LocalDate hireDate, String name,
                              String position, String department, EmployeeEmail email, String status) {
         this.type = type;
         this.changeLog = changeLog;
