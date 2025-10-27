@@ -6,6 +6,7 @@ import com.team2.hrbank.changelog.mapper.ChangeLogMapper;
 import com.team2.hrbank.changelog.repository.ChangeLogRepository;
 import com.team2.hrbank.changelog.repository.EmployeeDetailLogRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,10 +24,23 @@ public class BasicChangeLogService implements ChangeLogService{
     
     @Override
     public CursorPageResponseChangeLogDto getChangeLogs(ChangeLogRequestDto.PaginatedLogRequest request) {
-
         // return paginated logs from repository
+        Slice<ChangeLog> changeLogSlice = changeLogRepository.findChangeLogs(request);
+        List<ChangeLogDto> changeLogDtoList = changeLogMapper.toDtoList(changeLogSlice.getContent());
+        changeLogDtoList.remove(changeLogDtoList.size()-1);
 
-        return null;
+        return CursorPageResponseChangeLogDto.builder()
+                .content(changeLogDtoList)
+                .nextCursor(changeLogSlice.hasNext() ?
+                        changeLogSlice.getContent().get(changeLogSlice.getContent().size() -1).getAt().toString() : null)
+                .nextIdAfter(changeLogSlice.hasNext() ?
+                        changeLogSlice.getContent().get(changeLogSlice.getContent().size() -1).getId() : null)
+                .size(request.size())
+                .totalElements(changeLogRepository.countChangeLogs(
+                        request.atFrom(),
+                        request.atTo()
+                ))
+                .hasNext(changeLogSlice.hasNext()).build();
     }
 
     @Override

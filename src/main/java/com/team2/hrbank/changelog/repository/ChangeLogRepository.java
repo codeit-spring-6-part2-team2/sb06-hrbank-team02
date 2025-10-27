@@ -34,19 +34,21 @@ public interface ChangeLogRepository extends QuerydslJpaRepository<ChangeLog, Lo
                 .fetch();
 
         boolean hasNext = changeLogList.size() > request.size();
-        Long nextIdAfter = null;
-        Long nextCursor = null;
-        if (hasNext) {
-            nextIdAfter = changeLogList.get(request.size()).getId();
-            nextCursor = changeLogList.get(request.size()).getId();
-            changeLogList.remove(request.size());
-        }
 
         return new SliceImpl<>(changeLogList, Pageable.ofSize(request.size()), hasNext);
     }
 
     private BooleanBuilder buildPredicate(ChangeLogRequestDto.PaginatedLogRequest request) {
         BooleanBuilder builder = new BooleanBuilder();
+
+        if (request.cursor() != null) {
+            LocalDateTime cursorDateTime = LocalDateTime.parse(request.cursor());
+            if (request.sortDirection().equalsIgnoreCase("ASC")) {
+                builder.and(changeLog.at.gt(cursorDateTime));
+            } else {
+                builder.and(changeLog.at.lt(cursorDateTime));
+            }
+        }
 
         if (request.employeeNumber() != null) {
             builder.and(changeLog.employeeNumber.eq(request.employeeNumber()));
