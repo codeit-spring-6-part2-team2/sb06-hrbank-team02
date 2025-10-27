@@ -26,9 +26,17 @@ public record DiffDto(
         private final List<DiffDto> diffList = new ArrayList<>();
 
         public void compareAndAdd(String propertyName, String before, String after) {
-            if ((before == null && after != null) || (before != null && !before.equals(after))) {
+
+            if (before == null && after == null) {
+                return;
+            } else if (before == null) {
+                diffList.add(new DiffDto(propertyName, null, after));
+            } else if (after == null) {
+                diffList.add(new DiffDto(propertyName, before, null));
+            } else if (!before.equals(after)) {
                 diffList.add(new DiffDto(propertyName, before, after));
             }
+
         }
 
         public List<DiffDto> build() {
