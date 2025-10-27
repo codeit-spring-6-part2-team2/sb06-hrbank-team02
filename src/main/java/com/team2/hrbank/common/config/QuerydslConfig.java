@@ -1,16 +1,15 @@
 package com.team2.hrbank.common.config;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import jakarta.persistence.EntityManager;
-import org.springframework.context.annotation.Bean;
+import io.github.openfeign.querydsl.jpa.spring.repository.config.EnableQuerydslRepositories;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@EnableQuerydslRepositories
 public class QuerydslConfig {
 
-    @Bean
+    /*@Bean
     public JPAQueryFactory jpaQueryFactory(EntityManager em) {
         return new JPAQueryFactory(em);
-    }
+    }*/
 
 }
