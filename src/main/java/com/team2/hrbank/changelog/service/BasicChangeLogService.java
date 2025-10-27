@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -44,6 +45,14 @@ public class BasicChangeLogService implements ChangeLogService{
                 return getDiffAllFieldsAsAfter(log, changeLog.getEmployeeNumber());
             }
         }
+
+        employeeDetailLogList.sort((o1, o2) -> {
+            if (o1.getType() == EmployeeLogType.BEFORE && o2.getType() == EmployeeLogType.AFTER) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
 
         // if size is 2
         return getDiff(employeeDetailLogList.get(1), employeeDetailLogList.get(0));
