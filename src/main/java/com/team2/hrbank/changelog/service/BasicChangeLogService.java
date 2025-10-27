@@ -41,7 +41,7 @@ public class BasicChangeLogService implements ChangeLogService{
             if (changeLog.getType() == ChangeLogType.DELETED) {
                 return getDiffAllFieldsAsBefore(log);
             } else if (changeLog.getType() == ChangeLogType.CREATED) {
-                return getDiffAllFieldsAsAfter(log);
+                return getDiffAllFieldsAsAfter(log, changeLog.getEmployeeNumber());
             }
         }
 
@@ -52,34 +52,35 @@ public class BasicChangeLogService implements ChangeLogService{
 
     private List<DiffDto> getDiffAllFieldsAsBefore(EmployeeDetailLog log) {
         return new DiffDto.DiffDtoListBuilder()
-                .compareAndAdd("hireDate", log.getHireDate().toString(), null)
-                .compareAndAdd("name", log.getName(), null)
-                .compareAndAdd("position", log.getPosition(), null)
-                .compareAndAdd("department", log.getDepartment(), null)
-                .compareAndAdd("email", log.getEmail().email(), null)
-                .compareAndAdd("status", log.getStatus(), null)
+                .compareAndAdd("입사일", log.getHireDate().toString(), null)
+                .compareAndAdd("이름", log.getName(), null)
+                .compareAndAdd("직함", log.getPosition(), null)
+                .compareAndAdd("부서명", log.getDepartment(), null)
+                .compareAndAdd("이메일", log.getEmail().email(), null)
+                .compareAndAdd("상태", log.getStatus(), null)
                 .build();
     }
 
-    private List<DiffDto> getDiffAllFieldsAsAfter(EmployeeDetailLog log) {
+    private List<DiffDto> getDiffAllFieldsAsAfter(EmployeeDetailLog log, String employeeNumber) {
         return new DiffDto.DiffDtoListBuilder()
-                .compareAndAdd("hireDate", null, log.getHireDate().toString())
-                .compareAndAdd("name", null, log.getName())
-                .compareAndAdd("position", null, log.getPosition())
-                .compareAndAdd("department", null, log.getDepartment())
-                .compareAndAdd("email", null, log.getEmail().email())
-                .compareAndAdd("status", null, log.getStatus())
+                .compareAndAdd("입사일", null, log.getHireDate().toString())
+                .compareAndAdd("이름", null, log.getName())
+                .compareAndAdd("직함", null, log.getPosition())
+                .compareAndAdd("부서명", null, log.getDepartment())
+                .compareAndAdd("이메일", null, log.getEmail().email())
+                .compareAndAdd("사번", null, employeeNumber)
+                .compareAndAdd("상태", null, log.getStatus())
                 .build();
     }
 
     private List<DiffDto> getDiff(EmployeeDetailLog beforeLog, EmployeeDetailLog afterLog) {
         return new DiffDto.DiffDtoListBuilder()
-                .compareAndAdd("hireDate", beforeLog.getHireDate().toString(),  afterLog.getHireDate().toString())
-                .compareAndAdd("name", beforeLog.getName(),  afterLog.getName())
-                .compareAndAdd("position", beforeLog.getPosition(),  afterLog.getPosition())
-                .compareAndAdd("department", beforeLog.getDepartment(),  afterLog.getDepartment())
-                .compareAndAdd("email", beforeLog.getEmail().email(),  afterLog.getEmail().email())
-                .compareAndAdd("status", beforeLog.getStatus(),  afterLog.getStatus())
+                .compareAndAdd("입사일", beforeLog.getHireDate().toString(),  afterLog.getHireDate().toString())
+                .compareAndAdd("이름", beforeLog.getName(),  afterLog.getName())
+                .compareAndAdd("직함", beforeLog.getPosition(),  afterLog.getPosition())
+                .compareAndAdd("부서명", beforeLog.getDepartment(),  afterLog.getDepartment())
+                .compareAndAdd("이메일", beforeLog.getEmail().email(),  afterLog.getEmail().email())
+                .compareAndAdd("상태", beforeLog.getStatus(),  afterLog.getStatus())
                 .build();
     }
 
