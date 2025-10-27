@@ -21,7 +21,7 @@ public record DiffDto(
         return new DiffDto(propertyName, null, after);
     }
 
-    public static class DiffDtoBuilder {
+    public static class DiffDtoListBuilder {
 
         private final List<DiffDto> diffList = new ArrayList<>();
 
