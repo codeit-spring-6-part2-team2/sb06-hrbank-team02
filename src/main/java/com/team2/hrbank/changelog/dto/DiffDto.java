@@ -1,6 +1,7 @@
 package com.team2.hrbank.changelog.dto;
 
-import lombok.Builder;
+import java.util.ArrayList;
+import java.util.List;
 
 public record DiffDto(
         String propertyName,
@@ -19,5 +20,22 @@ public record DiffDto(
     public DiffDto withAfter(String propertyName, String after) {
         return new DiffDto(propertyName, null, after);
     }
+
+    public static class DiffDtoBuilder {
+
+        private final List<DiffDto> diffList = new ArrayList<>();
+
+        public void compareAndAdd(String propertyName, String before, String after) {
+            if ((before == null && after != null) || (before != null && !before.equals(after))) {
+                diffList.add(new DiffDto(propertyName, before, after));
+            }
+        }
+
+        public List<DiffDto> build() {
+            return diffList;
+        }
+
+    }
+
 
 }
