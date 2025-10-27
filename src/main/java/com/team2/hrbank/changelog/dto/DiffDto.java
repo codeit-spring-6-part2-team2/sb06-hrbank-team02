@@ -25,10 +25,10 @@ public record DiffDto(
 
         private final List<DiffDto> diffList = new ArrayList<>();
 
-        public void compareAndAdd(String propertyName, String before, String after) {
+        public DiffDtoListBuilder compareAndAdd(String propertyName, String before, String after) {
 
             if (before == null && after == null) {
-                return;
+                return this;
             }
 
             if (before == null) {
@@ -38,6 +38,8 @@ public record DiffDto(
             } else if (!before.equals(after)) {
                 diffList.add(new DiffDto(propertyName, before, after));
             }
+
+            return this;
 
         }
 
