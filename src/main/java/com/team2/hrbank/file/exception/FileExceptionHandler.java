@@ -1,5 +1,6 @@
 package com.team2.hrbank.file.exception;
 
+import java.io.FileNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,4 +17,10 @@ public class FileExceptionHandler {
         .body(e.getMessage());
   }
 
+  @ExceptionHandler(FileNotFoundException.class)
+  public ResponseEntity<String> handleFileNotFoundException(FileNotFoundException e) {
+    return ResponseEntity
+        .status(HttpStatus.NOT_FOUND)
+        .body(e.getMessage());
+  }
 }
