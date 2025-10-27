@@ -3,6 +3,7 @@ package com.team2.hrbank.changelog.dto;
 import lombok.Builder;
 import org.jspecify.annotations.Nullable;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class EmployeeLogDto {
@@ -13,7 +14,7 @@ public class EmployeeLogDto {
     @Builder
     public record CreateLogRequest(
             // Employee info
-            LocalDateTime hireDate,
+            LocalDate hireDate,
             String employeeName,
             String employeePosition,
             String departmentName,
@@ -30,7 +31,6 @@ public class EmployeeLogDto {
             // Employee info
             String employeeNumber,
             // metadata
-            @Nullable String memo,
             String ipAddress
     ) {}
 
