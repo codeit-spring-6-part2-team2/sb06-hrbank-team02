@@ -5,7 +5,7 @@ import com.team2.hrbank.backup.dto.BackupDto;
 import com.team2.hrbank.backup.dto.CursorPageRequestBackupDto;
 import com.team2.hrbank.backup.dto.CursorPageResponseBackupDto;
 
-public interface BackupService {
+interface BackupService {
 
     // 데이터 백업 생성
     BackupDto addBackup();
@@ -16,5 +16,4 @@ public interface BackupService {
     // 최근 백업 정보 조회
     BackupDto getLatestBackup(BackupStatus status);
 
-    void performScheduledBackup();
 }
