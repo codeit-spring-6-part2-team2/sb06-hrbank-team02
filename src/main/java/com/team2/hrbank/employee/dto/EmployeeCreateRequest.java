@@ -1,5 +1,7 @@
 package com.team2.hrbank.employee.dto;
 
+import org.jspecify.annotations.Nullable;
+
 import java.time.LocalDate;
 
 public record EmployeeCreateRequest(
@@ -8,6 +10,6 @@ public record EmployeeCreateRequest(
         Long departmentId,
         String position,
         LocalDate hireDate,
-        String memo
+        @Nullable String memo
 ) {
 }

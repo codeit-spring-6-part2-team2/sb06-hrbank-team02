@@ -1,7 +1,5 @@
 package com.team2.hrbank.employee.dto;
 
-import com.team2.hrbank.employee.domain.EmployeeStatus;
-
 import java.time.LocalDate;
 
 public record EmployeeDto(
@@ -13,7 +11,7 @@ public record EmployeeDto(
         String departmentName,
         String position,
         LocalDate hireDate,
-        EmployeeStatus status,
+        String status,
         Long profileImageId
 ) {
 }

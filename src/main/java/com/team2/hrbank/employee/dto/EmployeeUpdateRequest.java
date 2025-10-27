@@ -1,6 +1,6 @@
 package com.team2.hrbank.employee.dto;
 
-import com.team2.hrbank.employee.domain.EmployeeStatus;
+import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDate;
 
@@ -10,7 +10,7 @@ public record EmployeeUpdateRequest(
         Long departmentId,
         String position,
         LocalDate hireDate,
-        EmployeeStatus status,
-        String memo
+        String status,
+        @Nullable String memo
 ) {
 }

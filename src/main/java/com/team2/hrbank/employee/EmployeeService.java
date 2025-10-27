@@ -1,29 +1,30 @@
 package com.team2.hrbank.employee;
 
-import com.team2.hrbank.employee.domain.EmployeeStatus;
 import com.team2.hrbank.employee.dto.*;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@NullMarked
 public interface EmployeeService {
 
-    EmployeeDto getEmployees();
+    CursorPageResponseEmployeeDto getEmployees(CursorPageRequestEmployeeDto employee);
 
-    EmployeeDto addEmployee(EmployeeCreateRequest employee, MultipartFile profile);
+    EmployeeDto addEmployee(EmployeeCreateRequest employee, MultipartFile profile, String ipAddress);
 
     EmployeeDto getEmployee(Long id);
 
-    void deleteEmployee(Long id);
+    void deleteEmployee(Long id, String ipAddress);
 
-    EmployeeDto updateEmployee(EmployeeUpdateRequest employee, MultipartFile profile);
+    EmployeeDto updateEmployee(Long id, EmployeeUpdateRequest employee, MultipartFile profile, String ipAddress);
 
     List<EmployeeTrendDto> getEmployeeTrends(LocalDate from, LocalDate to, String unit);
 
-    List<EmployeeDistributionDto> getEmployeeDistributions(String groupBy, EmployeeStatus status);
+    List<EmployeeDistributionDto> getEmployeeDistributions(String groupBy, String employeeStatus);
 
-    Long getEmployeeCount(EmployeeStatus status, LocalDate fromDate, LocalDate toDate);
+    Long getEmployeeCount(String employeeStatus, LocalDate fromDate, LocalDate toDate);
 
     BackupEmployeePageResponseDto getEmployees(BackupEmployeePageRequestDto employee);
 
