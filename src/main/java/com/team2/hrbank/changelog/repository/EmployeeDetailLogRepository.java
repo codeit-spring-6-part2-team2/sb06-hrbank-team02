@@ -13,7 +13,7 @@ public interface EmployeeDetailLogRepository extends QuerydslJpaRepository<Emplo
 
     QEmployeeDetailLog employeeDetailLog = QEmployeeDetailLog.employeeDetailLog;
 
-    default List<EmployeeDetailLog> findByChangeLogsId(Long changeLogId) {
+    default List<EmployeeDetailLog> findByChangeLogId(Long changeLogId) {
         return selectFrom(employeeDetailLog)
                 .where(employeeDetailLog.changeLog.id.eq(changeLogId))
                 .fetch();

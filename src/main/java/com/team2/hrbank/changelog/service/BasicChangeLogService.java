@@ -32,7 +32,7 @@ public class BasicChangeLogService implements ChangeLogService{
     public List<DiffDto> getDiffByChangeLogId(Long id) {
 
         // get ChangeLog and List of EmployeeLogDiff by ChangeLog id from repository
-        List<EmployeeDetailLog> employeeDetailLogList = employeeDetailLogRepository.findByChangeLogsId(id);
+        List<EmployeeDetailLog> employeeDetailLogList = employeeDetailLogRepository.findByChangeLogId(id);
 
         // if size is 1
         if (employeeDetailLogList.size() == 1) {
