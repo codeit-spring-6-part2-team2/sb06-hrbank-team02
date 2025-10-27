@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -36,10 +35,7 @@ public class BasicChangeLogService implements ChangeLogService{
                 .nextIdAfter(changeLogSlice.hasNext() ?
                         changeLogSlice.getContent().get(changeLogSlice.getContent().size() -1).getId() : null)
                 .size(request.size())
-                .totalElements(changeLogRepository.countChangeLogs(
-                        request.atFrom(),
-                        request.atTo()
-                ))
+                .totalElements(changeLogRepository.countChangeLogs())
                 .hasNext(changeLogSlice.hasNext()).build();
     }
 
@@ -110,7 +106,7 @@ public class BasicChangeLogService implements ChangeLogService{
     @Override
     public Long getTotalCount(LocalDateTime fromDate, LocalDateTime toDate) {
         // return count from repository
-        return changeLogRepository.countChangeLogs(fromDate, toDate);
+        return changeLogRepository.countChangeLogsByDate(fromDate, toDate);
     }
 
     @Override

@@ -80,15 +80,18 @@ public interface ChangeLogRepository extends QuerydslJpaRepository<ChangeLog, Lo
 
     }
 
-    default Long countChangeLogs(LocalDateTime fromDate, LocalDateTime toDate) {
-        // Implementation placeholder
+    default Long countChangeLogs() {
+        return selectFrom(changeLog)
+                .fetchCount();
+    }
+
+    default Long countChangeLogsByDate(LocalDateTime fromDate, LocalDateTime toDate) {
         return selectFrom(changeLog)
                 .where(changeLog.at.between(fromDate, toDate))
                 .fetchCount();
     }
 
     default Optional<LocalDateTime> findRecentLogDate() {
-        // Implementation placeholder
         return select(changeLog.at)
                 .from(changeLog)
                 .orderBy(changeLog.at.desc())
