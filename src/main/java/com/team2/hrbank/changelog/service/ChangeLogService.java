@@ -13,10 +13,13 @@ public interface ChangeLogService {
 
     Long getTotalCount(LocalDateTime fromDate, LocalDateTime toDate);
 
-    ChangeLogDto addCreateEmployeeLog(EmployeeLogDto.CreateLogRequest request);
+    //BackUp 모듈의 백업 여부 판단을 위한 최근 로그 일자 조회
+    LocalDateTime getRecentLogDate();
 
-    ChangeLogDto addUpdateEmployeeLog(EmployeeLogDto.CreateUpdateLogRequest request);
+    ChangeLogDto addEmployeeInsertLog(EmployeeLogDto.CreateLogRequest request);
 
-    ChangeLogDto addDeleteEmployeeLog(EmployeeLogDto.CreateDeleteLogRequest request);
+    ChangeLogDto addEmployeeUpdateLog(EmployeeLogDto.CreateLogRequest request);
+
+    ChangeLogDto addEmployeeDeleteLog(EmployeeLogDto.CreateDeleteLogRequest request);
 
 }
