@@ -198,6 +198,8 @@ public class BasicChangeLogService implements ChangeLogService{
                 .status(beforeLog.getStatus())
                 .build();
 
+        employeeDetailLogRepository.save(employeeDetailLog);
+
         // convert to ChangeLogDto and return
         return changeLogMapper.toDto(changeLog);
 
