@@ -4,7 +4,6 @@ import lombok.Builder;
 import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class EmployeeLogDto {
 
