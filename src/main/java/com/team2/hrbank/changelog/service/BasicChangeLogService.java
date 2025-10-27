@@ -108,7 +108,7 @@ public class BasicChangeLogService implements ChangeLogService{
                 .build());
 
         // insert EmployeeLog as after log
-        EmployeeDetailLog employeeDetailLog = EmployeeDetailLog.builder()
+        employeeDetailLogRepository.save(EmployeeDetailLog.builder()
                 .changeLog(changeLog)
                 .type(EmployeeLogType.AFTER)
                 .hireDate(request.hireDate())
@@ -117,9 +117,7 @@ public class BasicChangeLogService implements ChangeLogService{
                 .department(request.departmentName())
                 .email(new EmployeeEmail(request.employeeEmail()))
                 .status(request.employeeStatus())
-                .build();
-
-        employeeDetailLogRepository.save(employeeDetailLog);
+                .build());
 
         // convert to ChangeLogDto and return
         return changeLogMapper.toDto(changeLog);
@@ -187,7 +185,7 @@ public class BasicChangeLogService implements ChangeLogService{
                 .build());
 
         // insert EmployeeLog
-        EmployeeDetailLog employeeDetailLog = EmployeeDetailLog.builder()
+        employeeDetailLogRepository.save(EmployeeDetailLog.builder()
                 .changeLog(changeLog)
                 .type(EmployeeLogType.BEFORE)
                 .hireDate(beforeLog.getHireDate())
@@ -196,9 +194,7 @@ public class BasicChangeLogService implements ChangeLogService{
                 .department(beforeLog.getDepartment())
                 .email(beforeLog.getEmail())
                 .status(beforeLog.getStatus())
-                .build();
-
-        employeeDetailLogRepository.save(employeeDetailLog);
+                .build());
 
         // convert to ChangeLogDto and return
         return changeLogMapper.toDto(changeLog);
