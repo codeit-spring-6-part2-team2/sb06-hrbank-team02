@@ -134,17 +134,6 @@ public class BasicChangeLogService implements ChangeLogService{
         EmployeeDetailLog beforeLog = employeeDetailLogRepository.findByEmployeeNumber(request.employeeNumber())
                 .orElseThrow(() -> new IllegalArgumentException("해당 사원의 로그를 찾을 수 없습니다: " + request.employeeNumber()));
 
-        beforeLog = EmployeeDetailLog.builder()
-                .changeLog(beforeLog.getChangeLog())
-                .type(EmployeeLogType.BEFORE)
-                .hireDate(beforeLog.getHireDate())
-                .name(beforeLog.getName())
-                .position(beforeLog.getPosition())
-                .department(beforeLog.getDepartment())
-                .email(beforeLog.getEmail())
-                .status(beforeLog.getStatus())
-                .build();
-
         // insert ChangeLog and return entity
         ChangeLog changeLog = changeLogRepository.save(ChangeLog.builder()
                 .type(ChangeLogType.UPDATED)
@@ -154,6 +143,17 @@ public class BasicChangeLogService implements ChangeLogService{
                 .build());
 
         // insert EmployeeLog
+        beforeLog = EmployeeDetailLog.builder()
+                .changeLog(changeLog)
+                .type(EmployeeLogType.BEFORE)
+                .hireDate(beforeLog.getHireDate())
+                .name(beforeLog.getName())
+                .position(beforeLog.getPosition())
+                .department(beforeLog.getDepartment())
+                .email(beforeLog.getEmail())
+                .status(beforeLog.getStatus())
+                .build();
+
         EmployeeDetailLog afterLog = EmployeeDetailLog.builder()
                 .changeLog(changeLog)
                 .type(EmployeeLogType.AFTER)
