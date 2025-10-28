@@ -55,8 +55,8 @@ com.team2.hrbank.backup.dto
 ├── BackupDto                         # 백업 응답 DTO
 ├── CursorPageRequestBackupDto        # 페이지네이션 요청
 ├── CursorPageResponseBackupDto       # 페이지네이션 응답
-├── BackupCompleteRequestDto          # 백업 완료 요청
-├── BackupFailRequestDto              # 백업 실패 요청
+├── BackupCompleteRequestDto          # 백업 완료 요청 (.csv)
+├── BackupFailRequestDto              # 백업 실패 요청 (.log)
 └── BackupCreateRequestDto            # 백업 생성 요청
 ```
 #### 3. Controller Layer  
