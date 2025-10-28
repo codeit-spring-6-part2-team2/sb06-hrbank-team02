@@ -4,7 +4,7 @@
 제목: HR Bank  
 부제: Batch로 데이터를 관리하는 Open EMS  
 기간: 2025.10.20(월) ~ 2025.10.28(화)  
-저장소: https://github.com/codeit-spring-6-part2-team2/sb06-hrbank-team02
+저장소: https://github.com/codeit-spring-6-part2-team2/sb06-hrbank-team02  
 담당 기능: 데이터 백업 관리
 
 ---
