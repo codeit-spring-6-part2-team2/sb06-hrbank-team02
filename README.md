@@ -230,6 +230,14 @@ sb06-hrbank-team02
 
 - 미완성
 
+---
+
 # 프로젝트 회고록
 
 - [./docs](./docs)
+
+---
+
+# 프로젝트 컨벤션
+
+- https://github.com/orgs/codeit-spring-6-part2-team2/discussions/6
